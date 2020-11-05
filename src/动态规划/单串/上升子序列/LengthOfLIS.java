@@ -1,9 +1,11 @@
 package 动态规划.单串.上升子序列;
 
 /**
- * 最长上升子序列LIS
+ * 300. 最长上升子序列
+ * https://leetcode-cn.com/problems/longest-increasing-subsequence/
+ *
  */
-public class LIS {
+public class LengthOfLIS {
 
     /**
      * 解法1 动态规划，利用数组记录以nums[i]为最后一位数的最长上升子序列长度
@@ -49,7 +51,7 @@ public class LIS {
                 int left = 0;
                 int pos = 0;
                 while (left <= right) {
-                    //用位运算计算均值
+                    // 用位运算计算均值
                     int mid = (left + right) >> 1;
                     if (dp[mid] < nums[i]) {
                         pos = mid;
