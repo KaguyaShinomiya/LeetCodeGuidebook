@@ -38,17 +38,17 @@ public class LengthOfLIS {
      */
     public int lengthOfLISSolution2(int[] nums) {
         if (nums.length == 0) return 0;
-        int[] dp = new int[nums.length];
+        int[] dp = new int[nums.length + 1];
         int len = 1;
-        dp[0] = nums[0];
+        dp[1] = nums[0];
         for (int i = 0; i < nums.length; i++) {
             if (nums[i] > dp[len - 1]) {
-                dp[len - 1] = nums[i];
                 len++;
+                dp[len] = nums[i];
             }
             else {
-                int right = len - 1;
-                int left = 0;
+                int right = len;
+                int left = 1;
                 int pos = 0;
                 while (left <= right) {
                     // 用位运算计算均值
@@ -61,7 +61,7 @@ public class LengthOfLIS {
                         right = mid - 1;
                     }
                 }
-                dp[pos] = nums[i];
+                dp[pos + 1] = nums[i];
             }
         }
 
