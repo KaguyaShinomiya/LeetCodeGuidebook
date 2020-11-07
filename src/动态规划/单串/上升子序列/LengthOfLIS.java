@@ -42,7 +42,7 @@ public class LengthOfLIS {
         int len = 1;
         dp[1] = nums[0];
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] > dp[len - 1]) {
+            if (nums[i] > dp[len]) {
                 len++;
                 dp[len] = nums[i];
             }
