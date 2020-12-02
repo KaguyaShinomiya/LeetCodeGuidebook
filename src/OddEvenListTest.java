@@ -1,3 +1,5 @@
+import utils.ListNode;
+
 class OddEvenListTest {
 
     public static ListNode oddEvenList(ListNode head) {

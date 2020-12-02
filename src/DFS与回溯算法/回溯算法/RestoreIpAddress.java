@@ -1,4 +1,4 @@
-package 二叉树与回溯算法.回溯算法;
+package DFS与回溯算法.回溯算法;
 
 import java.util.ArrayList;
 import java.util.Deque;
