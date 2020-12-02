@@ -1,4 +1,4 @@
-package 二叉树与回溯算法.二叉树.二叉树遍历;
+package 二叉树.二叉树遍历;
 
 import utils.TreeNode;
 
