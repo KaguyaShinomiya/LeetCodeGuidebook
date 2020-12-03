@@ -1,4 +1,4 @@
-package 排序.经典排序;
+package 排序与查找.经典排序;
 
 public class MergeSort {
     public static void mergeSort(int[] a, int[] tmpArray, int left, int right) {

@@ -1,4 +1,4 @@
-package 排序.经典排序;
+package 排序与查找.经典排序;
 
 import javax.sound.sampled.Line;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package 排序.经典排序;
+package 排序与查找.经典排序;
 
 public class QuickSort {
     public static void quickSort(int[] a, int left, int right) {
