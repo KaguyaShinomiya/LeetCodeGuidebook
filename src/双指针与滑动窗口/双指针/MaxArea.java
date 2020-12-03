@@ -1,4 +1,4 @@
-package 数组与字符串.双指针;
+package 双指针与滑动窗口.双指针;
 
 /**
  * The Class: MaxArea
