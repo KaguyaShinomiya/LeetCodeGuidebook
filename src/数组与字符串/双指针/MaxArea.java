@@ -16,6 +16,12 @@ package 数组与字符串.双指针;
  * @since: 2020-12-03 22:40
  */
 public class MaxArea {
+    /**
+     * 解法1: 双指针
+     * 显然最大面积是由左右指针中更低的那个决定的，所以每次都移动高度更矮的指针
+     * 当更矮的指针所对应的高度增高后，重新计算最大面积
+     *
+     */
     public int maxArea(int[] height) {
         if (height.length == 0) {
             return 0;
