@@ -1,4 +1,4 @@
-package 数组与字符串.查找;
+package 排序与查找.查找;
 
 /**
  * The Class: FindNumberIn2DArray
