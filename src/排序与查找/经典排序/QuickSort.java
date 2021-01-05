@@ -1,70 +1,79 @@
 package 排序与查找.经典排序;
 
 public class QuickSort {
-    public static void quickSort(int[] a, int left, int right) {
-        int CUTOFF = 5;
-        int pivot;
-        if (right - left > CUTOFF) {
-            while (left < right) {
-                pivot = partition(a, left, right);
-                quickSort(a, left, pivot - 1);
-                left = pivot + 1;
-            }
-
+    public void quickSort(int[] arr, int left, int right) {
+        if (left > right) {
+            return;
         }
-        else {
-           insertionSort(a, left, right);
-        }
+        int pivot = partition(arr, left, right);
+        quickSort(arr, left, pivot - 1);
+        quickSort(arr, pivot + 1, right);
     }
 
-    public static int partition(int[] a, int left, int right) {
-        int pivot = median3(a, left, right);
-        int temp = a[left];
-        while (left < right) {
-            while (left < right && a[right] >= pivot) {
-                right--;
+    /**
+     * 每轮切分，使得左边的值都小于枢纽值，右边的值都大于枢纽值
+     * 返回枢纽值的位置
+     *
+     */
+    public int partition(int[] arr, int left, int right) {
+        // 注意这步操作之后，枢纽值的位置一直位于arr[left]
+        int pivot = median3(arr, left, right);
+        int i = left + 1;
+        int j = right;
+        while (true) {
+            // 找到左边的比pivot大的元素
+            while (i < right && arr[i] <= pivot) {
+                i++;
             }
-            a[left] = a[right];
-            while (left < right && a[left] <= pivot) {
-                left++;
+            // 找到右边的比pivot小的元素
+            while (j >= left && arr[j] >= pivot) {
+                j--;
             }
-            a[right] = a[left];
-
+            if (i >= j) {
+                break;
+            }
+            // 交换两个元素的位置
+            swap(arr, i, j);
         }
-        a[left] = temp;
-        return left;
+        // 在最后一步，把枢纽元和i的元素进行交换
+        swap(arr, left, i);
+        return i;
     }
 
-    public static void swap(int[] a, int left, int right) {
-        int temp = a[left];
-        a[left] = a[right];
-        a[right] = temp;
-    }
-
-    public static int median3(int[] a, int left, int right) {
+    /**
+     * 三数取中之后将枢纽值pivot交换到数组最左边
+     *
+     */
+    private int median3(int[] arr, int left, int right) {
         int center = (left + right) / 2;
-        if (a[left] > a[center]) {
-            swap(a, left, center);
+        if (arr[left] > arr[center]) {
+            swap(arr, left, center);
         }
-        if (a[right] < a[left]) {
-            swap(a, left, right);
+        if (arr[right] < arr[left]) {
+            swap(arr, left, right);
         }
-        if (a[right] < a[center]) {
-            swap(a, left, center);
+        if (arr[right] < arr[center]) {
+            swap(arr, left, center);
         }
-
-        swap(a, center, left);
-        return a[left];
+        // 把枢纽值放到数组最左边
+        swap(arr, center, left);
+        return arr[left];
     }
 
-    public static void insertionSort(int[] a, int left, int right) {
+    private void swap(int[] arr, int left, int right) {
+        int temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
+    }
+
+    private void insertionSort(int[] arr, int left, int right) {
         int j;
         for (int p = left; p <= right; p++) {
-            int temp = a[p];
-            for (j = p; j > 0 && a[j - 1] < temp; j--) {
-                a[j] = a[j - 1];
+            int temp = arr[p];
+            for (j = p; j > 0 && arr[j - 1] < temp; j--) {
+                arr[j] = arr[j - 1];
             }
-            a[j] = temp;
+            arr[j] = temp;
         }
     }
 
